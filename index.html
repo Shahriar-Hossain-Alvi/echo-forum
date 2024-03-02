@@ -10,15 +10,111 @@
     <!-- tailwind & daisyUI link -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- font awesome link -->
+    <script src="https://kit.fontawesome.com/63f9baa846.js" crossorigin="anonymous"></script>
     <!-- custom css link -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <h1 class="text-center text-6xl bg-red-300">Hello prithibi</h1>
+<body class="font-mulish">
+    <!-- spinner -->
+    <div class="mx-auto container mt-8 text-center" id="spinner">
+        <span class="spinner loading loading-bars  text-primary text-center loading-lg"></span>
+    </div>
+    <!-- spinner -->
+    <header class="container mx-auto pt-3 pb-8">
+        <!-- navbar -->
+        <nav class="mb-10">
+            <div class="navbar">
+                <!-- logo -->
+                <div class="flex-1">
+                    <a class="btn btn-ghost text-4xl font-black text-[#12132D]">Echo</a>
+                </div>
+                <div class="flex-none space-x-3">
+                    <!-- icons -->
+                    <div class="tooltip tooltip-bottom" data-tip="Home">
+                        <button class="bg-[#12132D08] hover:bg-[#bebfda99] border border-[#0307121A] p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 text-[#12132D99]">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="tooltip tooltip-bottom" data-tip="Create Post">
+                        <button class="bg-[#12132D08] hover:bg-[#bebfda99] border border-[#0307121A] p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 text-[#12132D99]">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="tooltip tooltip-bottom" data-tip="Create Account">
+                        <button class="bg-[#12132D08]  hover:bg-[#bebfda99] border border-[#0307121A] p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 text-[#12132D99]">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="tooltip tooltip-bottom" data-tip="Language">
+                        <button class="bg-[#12132D08] hover:bg-[#bebfda99] border border-[#0307121A] p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 text-[#12132D99]">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5" />
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- navbar button -->
+                    <button
+                        class="btn bg-[#797DFC] text-white rounded-full text-center text-xl font-bold hover:border hover:border-[#797DFC] hover:bg-white hover:text-[#797DFC]">Sign
+                        In</button>
+                </div>
+            </div>
+        </nav>
 
+        <!-- banner -->
+        <div class="hero rounded-[32px] py-24" style="background-image: url(images/banner.png);">
+            <div class="hero-content flex-col gap-14 lg:flex-row">
+                <div class="w-3/5">
+                    <h1 class="text-6xl font-black text-white">Welcome to the <span
+                            class="font-black text-6xl bg-clip-text text-transparent bg-gradient-to-r from-[#797DFC] to-[#797DFC6E]">Echo</span>
+                        Forum</h1>
+                    <p class="py-6 text-xl font-medium text-[#FFFFFFCC]">Share your favorite opinion and win and wp
+                        forum coffee mug!</p>
+                    <label class="input input-bordered flex items-center gap-2">
+                        <input type="text" class="grow text-[#03071280] font-medium"
+                            placeholder="Search here anything" />
+                        <button class="btn btn-primary">Get Started</button>
+                    </label>
 
+                </div>
+                <div class="flex justify-between w-2/5">
+                    <div>
+                        <h3>Registered Users</h3>
+                        <h3>Forum</h3>
+                        <h3>Topics</h3>
+                        <h3>Replies</h3>
+                    </div>
+                    <div>
+                        <h3>01</h3>
+                        <h3>05</h3>
+                        <h3>01</h3>
+                        <h3>09</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
+    <main>
+
+    </main>
+
+    <footer></footer>
 
 
     <!-- js files link -->
