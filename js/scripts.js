@@ -1,4 +1,4 @@
-//spinner
+//spinner on page load or refresh
 window.addEventListener('load', () => {
     const spinner = document.getElementById('spinner');
     spinner.style.display = 'block';
@@ -9,12 +9,19 @@ window.addEventListener('load', () => {
 
 });
 
-//fetch discuss post data
+
+
+//fetch discuss post data with 2 second spinner
 const loadAllPostData = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
-    const data = await res.json();
-    const discussPostArray = data.posts;
-    displayPosts(discussPostArray);
+    const spinner2 = document.getElementById('spinner2');
+    spinner2.style.display = 'block';
+    setTimeout(async () => {
+        spinner2.style.display = 'none';
+        const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
+        const data = await res.json();
+        const discussPostArray = data.posts;
+        displayPosts(discussPostArray);
+    }, 2000);
 }
 
 //show discussion posts
@@ -130,13 +137,17 @@ const displayPosts = (discussPostArray) => {
 // loadDiscussTitleViews();
 
 
-//latest post 
+//latest post with 2 second spinner 
 const loadLatestPostData = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
-    const data = await res.json();
-    const latestPostArray = data;
-    displayLatestPosts(latestPostArray)
-    // console.log(latestPostArray);
+    const spinner3 = document.getElementById('spinner3');
+    spinner3.style.display = 'block';
+    setTimeout(async () => {
+        spinner3.style.display = 'none';
+        const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
+        const data = await res.json();
+        const latestPostArray = data;
+        displayLatestPosts(latestPostArray);
+    }, 2000);
 }
 
 //show latest post
@@ -144,8 +155,7 @@ const displayLatestPosts = (latestPostArray) => {
     const latestPostContainer = document.getElementById('latest-posts-container');
 
     latestPostArray.forEach(latest => {
-        // latestPostContainer.classList = 'flex flex-col lg:flex-row justify-between gap-6';
-        latestPostContainer.classList = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+        latestPostContainer.classList = 'flex flex-col lg:flex-row justify-between gap-6';
 
         const latestPostCard = document.createElement('div');
         latestPostCard.innerHTML = `
@@ -166,8 +176,8 @@ const displayLatestPosts = (latestPostArray) => {
                 <div class="w-[10%]">
                     <img class="rounded-full" src="${latest.profile_image}" alt="post-user"></div>
                 <div class="w-[90%]">
-                    <h3 class="text-base font-bold text-[#12132D]">Cameron Williamson</h3>
-                    <p class="text-sm text-[#12132D99]">ROR Developer</p>
+                    <h3 class="text-base font-bold text-[#12132D]">${latest.author.name}</h3>
+                    <p class="text-sm text-[#12132D99]">${latest.author.designation ? latest.author.designation : "Unknown"}</p>
                 </div>
             </div>
         </div>
