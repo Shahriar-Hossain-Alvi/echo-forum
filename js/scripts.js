@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
 
 });
 
-//fetch data
+//fetch discuss post data
 const loadAllPostData = async () => {
     const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
     const data = await res.json();
@@ -90,14 +90,13 @@ const displayPosts = (discussPostArray) => {
         discussLeft.appendChild(discussCard);
 
         //mark as read btn functionality
-
         let secondInnerDiv = discussCard.querySelector('div:last-child');
         let thirdInnerDiv = secondInnerDiv.querySelector('div:last-child');
         let fourthInnerDiv = thirdInnerDiv.querySelector('svg:last-child');
         let parentOfFourthInnerDiv = fourthInnerDiv.parentElement;
-        console.log(parentOfFourthInnerDiv.classList);
-        let isRed = false;
+        // console.log(parentOfFourthInnerDiv.classList);
 
+        let isRed = false;
         parentOfFourthInnerDiv.addEventListener('click', () => {
             if (isRed === true) {
                 parentOfFourthInnerDiv.classList.remove('bg-red-400');
@@ -109,17 +108,75 @@ const displayPosts = (discussPostArray) => {
                 parentOfFourthInnerDiv.classList.remove('bg-[#10B981]');
                 isRed = true;
             }
-
         });
-
-
     });
-
-
 }
 
+//mark as read button functionality
+// const loadDiscussTitleViews = async () => {
+//     const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
+//     const data = await res.json();
+//     const discussTitles = data;
+//     showTitlesViews(discussTitles);
+
+// }
+
+// const showTitlesViews = (discussTitles) => {
+//     const readCounter = document.getElementById('read-counter');
+//     discussTitles.posts.forEach(title => {
+//         console.log(title);
+//     })
+// }
+// loadDiscussTitleViews();
+
+
+//latest post 
+const loadLatestPostData = async () => {
+    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
+    const data = await res.json();
+    const latestPostArray = data;
+    displayLatestPosts(latestPostArray)
+    // console.log(latestPostArray);
+}
+
+//show latest post
+const displayLatestPosts = (latestPostArray) => {
+    const latestPostContainer = document.getElementById('latest-posts-container');
+
+    latestPostArray.forEach(latest => {
+        // latestPostContainer.classList = 'flex flex-col lg:flex-row justify-between gap-6';
+        latestPostContainer.classList = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+
+        const latestPostCard = document.createElement('div');
+        latestPostCard.innerHTML = `
+        <div class="border border-[#12132D26] p-6 rounded-3xl">
+            <img class="rounded-3xl" src="${latest.
+                cover_image}" alt="latest-post">
+            <div class="mt-6 mb-4 flex gap-2 text-[#12132D99]">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                </svg>
+                <h4>${latest.author.posted_date ? latest.author.posted_date : 'No Publish Date'}</h4>
+            </div>
+            <h2 class="text-lg font-extrabold text-[#12132D] pb-3">${latest.title}</h2>
+            <p class="text-[#12132D99] pb-4">${latest.description}</p>
+            <div class="flex gap-4 items-center">
+                <div class="w-[10%]">
+                    <img class="rounded-full" src="${latest.profile_image}" alt="post-user"></div>
+                <div class="w-[90%]">
+                    <h3 class="text-base font-bold text-[#12132D]">Cameron Williamson</h3>
+                    <p class="text-sm text-[#12132D99]">ROR Developer</p>
+                </div>
+            </div>
+        </div>
+        `;
+        latestPostContainer.appendChild(latestPostCard);
+    });
+}
 
 loadAllPostData();
-
+loadLatestPostData();
 
 
