@@ -21,6 +21,7 @@ const loadAllPostData = async () => {
         const data = await res.json();
         const discussPostArray = data.posts;
         displayPosts(discussPostArray);
+        handleSearchBtn(discussPostArray);
     }, 2000);
 }
 
@@ -35,6 +36,8 @@ const displayPosts = (discussPostArray) => {
         if (checkActiveStatus === false) {
             badgeColor = 'badge-error';
         }
+        const discussPostTitle = discuss.title;
+        console.log(discussPostTitle);
 
         const discussCard = document.createElement('div');
         discussCard.classList = 'flex flex-col lg:flex-row gap-4 lg:gap-6 rounded-3xl p-5 lg:p-10 bg-[#797DFC1A] border border-[#797DFC] mb-6';
@@ -118,6 +121,7 @@ const displayPosts = (discussPostArray) => {
         });
     });
 }
+
 
 //mark as read button functionality
 // const loadDiscussTitleViews = async () => {
