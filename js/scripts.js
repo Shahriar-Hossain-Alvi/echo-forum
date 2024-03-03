@@ -89,6 +89,29 @@ const displayPosts = (discussPostArray) => {
         `;
         discussLeft.appendChild(discussCard);
 
+        //mark as read btn functionality
+
+        let secondInnerDiv = discussCard.querySelector('div:last-child');
+        let thirdInnerDiv = secondInnerDiv.querySelector('div:last-child');
+        let fourthInnerDiv = thirdInnerDiv.querySelector('svg:last-child');
+        let parentOfFourthInnerDiv = fourthInnerDiv.parentElement;
+        console.log(parentOfFourthInnerDiv.classList);
+        let isRed = false;
+
+        parentOfFourthInnerDiv.addEventListener('click', () => {
+            if (isRed === true) {
+                parentOfFourthInnerDiv.classList.remove('bg-red-400');
+                parentOfFourthInnerDiv.classList.add('bg-[#10B981]');
+                isRed = false;
+            }
+            else {
+                parentOfFourthInnerDiv.classList.add('bg-red-400');
+                parentOfFourthInnerDiv.classList.remove('bg-[#10B981]');
+                isRed = true;
+            }
+
+        });
+
 
     });
 
