@@ -22,13 +22,18 @@ const displayPosts = (discussPostArray) => {
     const discussLeft = document.getElementById('discuss-left');
 
     discussPostArray.forEach(discuss => {
-        console.log(discuss);
+        // console.log(discuss);
+        let badgeColor = 'badge-success';
+        const checkActiveStatus = discuss.isActive;
+        if (checkActiveStatus === false) {
+            badgeColor = 'badge-error';
+        }
 
         const discussCard = document.createElement('div');
         discussCard.classList = 'flex flex-col lg:flex-row gap-4 lg:gap-6 rounded-3xl p-5 lg:p-10 bg-[#797DFC1A] border border-[#797DFC] mb-6';
         discussCard.innerHTML = `
         <div class="indicator">
-            <span class="indicator-item badge badge-success"></span>
+            <span id="active-indicator" class="indicator-item badge ${badgeColor}"></span>
             <img class="w-20 h-20 rounded-2xl place-items-center" src="${discuss.image}" alt="">
         </div>
 
@@ -82,9 +87,12 @@ const displayPosts = (discussPostArray) => {
             </div>
         </div>
         `;
-
         discussLeft.appendChild(discussCard);
-    })
+
+
+    });
+
+
 }
 
 
