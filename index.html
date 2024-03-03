@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="font-mulish">
+<body class="font-mulish max-w-screen-2xl mx-auto">
     <!-- spinner -->
     <div class="mx-auto container mt-8 text-center" id="spinner">
         <span class="spinner loading loading-bars  text-primary text-center loading-lg"></span>
@@ -28,7 +28,7 @@
             <div class="navbar flex-col lg:flex-row">
                 <!-- logo -->
                 <div class="mb-8 lg:mb-0 lg:flex-1">
-                    <a class="btn btn-ghost text-6xl font-black text-[#12132D]">Echo</a>
+                    <a class="btn btn-ghost text-5xl font-black text-[#12132D]">Echo</a>
                 </div>
                 <div class="lg:flex-none space-x-1 lg:space-x-3">
                     <!-- icons -->
@@ -113,6 +113,7 @@
         </div>
     </header>
 
+    <!-- main -->
     <main class="container mt-12 lg:mt-24 mx-auto">
         <!-- discuss part start -->
         <section id="discuss">
@@ -428,8 +429,33 @@
         </section>
         <!-- latest post part end -->
     </main>
+    <!-- main -->
 
-    <footer></footer>
+
+    <!-- footer -->
+    <footer class="footer footer-center py-24 bg-[#12132D0D]">
+        <div class="p-10 container mx-auto">
+            <aside class="max-w-xl">
+                <h2 class="text-4xl font-black text-[#12132D] pb-4">Echo </h2>
+                <p class="text-[#12132DB2]">
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                    classical Latin literature from 45 BC
+                </p>
+            </aside>
+            <nav>
+                <div class="grid grid-flow-col gap-4">
+                    <a href=""><i class="fa-brands fa-twitter text-xl hover:text-[#797DFC]"></i></a>
+                    <a href=""><i class="fa-brands fa-facebook-f text-xl hover:text-[#797DFC]"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram text-xl hover:text-[#797DFC]"></i></a>
+                    <a href=""><i class="fa-brands fa-github text-xl hover:text-[#797DFC]"></i></a>
+                </div>
+            </nav>
+        </div>
+        <div class="border-t border-[#30325E1A] pt-12 w-full">
+            <p>Copyright © 2024 - All right reserved by ACME Industries Ltd</p>
+        </div>
+    </footer>
+
 
 
     <!-- js files link -->
