@@ -121,6 +121,7 @@ const displayPosts = (discussPostArray) => {
             const discussPostTitle = discuss.title;
             const discussPostViewCount = discuss.view_count;
             const discussCardRight = document.getElementById('discuss-card-right');
+            discussCardRight.classList.remove('hidden');
 
             const postTitleListContainer = document.getElementById('post-title-list-container');
             console.log(postTitleListContainer);
