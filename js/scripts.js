@@ -21,7 +21,6 @@ const loadAllPostData = async () => {
         const data = await res.json();
         const discussPostArray = data.posts;
         displayPosts(discussPostArray);
-        handleSearchBtn(discussPostArray);
     }, 2000);
 }
 
@@ -36,8 +35,6 @@ const displayPosts = (discussPostArray) => {
         if (checkActiveStatus === false) {
             badgeColor = 'badge-error';
         }
-        const discussPostTitle = discuss.title;
-        console.log(discussPostTitle);
 
         const discussCard = document.createElement('div');
         discussCard.classList = 'flex flex-col lg:flex-row gap-4 lg:gap-6 rounded-3xl p-5 lg:p-10 bg-[#797DFC1A] border border-[#797DFC] mb-6';
@@ -119,6 +116,29 @@ const displayPosts = (discussPostArray) => {
                 isRed = true;
             }
         });
+
+        parentOfFourthInnerDiv.addEventListener('click', () => {
+            const discussPostTitle = discuss.title;
+            const discussPostViewCount = discuss.view_count;
+            const discussCardRight = document.getElementById('discuss-card-right');
+
+            const postTitleListContainer = document.getElementById('post-title-list-container');
+            console.log(postTitleListContainer);
+            const postTitleListCard = document.createElement('div');
+            postTitleListCard.classList = 'flex justify-between space-x-1 p-2 lg:p-4 bg-white rounded-2xl mb-4';
+            postTitleListCard.innerHTML = `
+                <h2 class="text-[#12132D] font-medium lg:font-semibold">${discussPostTitle}</h2>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-[#12132D99]">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                <h4 class="#12132D99 font-inter">${discussPostViewCount}</h4>
+            `;
+            postTitleListContainer.appendChild(postTitleListCard);
+        })
     });
 }
 
