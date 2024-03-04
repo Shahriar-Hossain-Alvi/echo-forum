@@ -104,9 +104,7 @@ const displayPosts = (discussPostArray) => {
 
         let readCounter = 0;
         parentOfFourthInnerDiv.addEventListener('click', () => {
-            readCounter++;
-            markAsRead.innerText = parseInt(readCounter);
-            const markAsRead = document.getElementById('read-counter');
+
 
             const discussPostTitle = discuss.title;
             const discussPostViewCount = discuss.view_count;
@@ -114,7 +112,6 @@ const displayPosts = (discussPostArray) => {
             discussCardRight.classList.remove('hidden');
 
             const postTitleListContainer = document.getElementById('post-title-list-container');
-            console.log(postTitleListContainer);
             const postTitleListCard = document.createElement('div');
             postTitleListCard.classList = 'flex justify-between space-x-1 p-2 lg:p-4 bg-white rounded-2xl mb-4';
             postTitleListCard.innerHTML = `
@@ -128,12 +125,17 @@ const displayPosts = (discussPostArray) => {
                 </svg>
                 <h4 class="#12132D99 font-inter">${discussPostViewCount}</h4>
             `;
+
+            const markAsRead = document.getElementById('read-counter');
             postTitleListContainer.appendChild(postTitleListCard);
+            let postCardCount = postTitleListContainer.querySelectorAll('div');
+            for (let i = 1; i <= postCardCount.length; i++) {
+                readCounter = i;
+            }
+            markAsRead.innerText = parseInt(readCounter);
         })
     });
 }
-
-
 
 //latest post with 2 second spinner 
 const loadLatestPostData = async () => {
