@@ -10,7 +10,6 @@ window.addEventListener('load', () => {
 });
 
 
-
 //fetch discuss post data with 2 second spinner
 const loadAllPostData = async () => {
     const spinner2 = document.getElementById('spinner2');
@@ -101,23 +100,14 @@ const displayPosts = (discussPostArray) => {
         let thirdInnerDiv = secondInnerDiv.querySelector('div:last-child');
         let fourthInnerDiv = thirdInnerDiv.querySelector('svg:last-child');
         let parentOfFourthInnerDiv = fourthInnerDiv.parentElement;
-        // console.log(parentOfFourthInnerDiv.classList);
 
-        let isRed = false;
-        parentOfFourthInnerDiv.addEventListener('click', () => {
-            if (isRed === true) {
-                parentOfFourthInnerDiv.classList.remove('bg-red-400');
-                parentOfFourthInnerDiv.classList.add('bg-[#10B981]');
-                isRed = false;
-            }
-            else {
-                parentOfFourthInnerDiv.classList.add('bg-red-400');
-                parentOfFourthInnerDiv.classList.remove('bg-[#10B981]');
-                isRed = true;
-            }
-        });
 
+        let readCounter = 0;
         parentOfFourthInnerDiv.addEventListener('click', () => {
+            readCounter++;
+            markAsRead.innerText = parseInt(readCounter);
+            const markAsRead = document.getElementById('read-counter');
+
             const discussPostTitle = discuss.title;
             const discussPostViewCount = discuss.view_count;
             const discussCardRight = document.getElementById('discuss-card-right');
@@ -143,23 +133,6 @@ const displayPosts = (discussPostArray) => {
     });
 }
 
-
-//mark as read button functionality
-// const loadDiscussTitleViews = async () => {
-//     const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
-//     const data = await res.json();
-//     const discussTitles = data;
-//     showTitlesViews(discussTitles);
-
-// }
-
-// const showTitlesViews = (discussTitles) => {
-//     const readCounter = document.getElementById('read-counter');
-//     discussTitles.posts.forEach(title => {
-//         console.log(title);
-//     })
-// }
-// loadDiscussTitleViews();
 
 
 //latest post with 2 second spinner 
